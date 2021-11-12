@@ -22,7 +22,21 @@ export class AppComponent implements OnInit {
     });
   }
 
-  check() {
-    console.log(this.form.value);
+  logKeyValuePairs(group: FormGroup) {
+
+    Object.keys(group.controls).forEach(key => {
+     const abstractControl = group.get(key);
+     if(abstractControl instanceof FormGroup) {
+       this.logKeyValuePairs(abstractControl)
+     } else {
+       console.log(`Key: ${key} - Value: ${abstractControl.value}`)
+     }
+    })
   }
+  check() {
+    console.log(this.form.controls);
+    let obj = null;
+    this.logKeyValuePairs(this.form)
+  }
+
 }
