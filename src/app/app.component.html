@@ -1,24 +1,48 @@
 <div class="container p-3">
-  <form [formGroup]="form"></form>
-  <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label"
-      >Email address</label
-    >
-    <input
-      type="email"
-      class="form-control"
-      id="exampleFormControlInput1"
-      placeholder="name@example.com"
-    />
-  </div>
-  <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label"
-      >Example textarea</label
-    >
-    <textarea
-      class="form-control"
-      id="exampleFormControlTextarea1"
-      rows="3"
-    ></textarea>
-  </div>
+  <form [formGroup]="form" (ngSubmit)="check()">
+    <div class="mb-3">
+      <label for="fullName" class="form-label"
+        >Full Name</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        formControlName="email"
+        id="fullName"
+        placeholder="John Doe"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label"
+        >Email address</label
+      >
+      <input
+        type="email"
+        class="form-control"
+        formControlName="email"
+        id="exampleFormControlInput1"
+        placeholder="name@example.com"
+      />
+    </div>
+    <div formGroupName="skills">
+      <select formControlName="skillLevel" class="form-select" aria-label="Default select example">
+        <option selected>Select Your Tech Stack</option>
+        <option value="1">Front End</option>
+        <option value="2">Back End</option>
+        <option value="3">Full stack</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Skill Summary</label
+      >
+      <textarea
+        formControlName="skillSummary"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
 </div>
