@@ -12,12 +12,12 @@ export class AppComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
   ngOnInit() {
     this.form = this.fb.group({
-      fullName: this.fb.control(null, [Validators.required]),
-      email: this.fb.control(null, [Validators.required]),
-      skillSummary: this.fb.control(null),
+      fullName: [null, [Validators.required]],
+      email: [null, [Validators.required]],
+      skillSummary: [],
       skills: this.fb.group({
-        skillLevel: this.fb.control(null),
-        department: this.fb.control(null)
+        skillLevel:[null],
+        department: [null]
       })
     });
   }
